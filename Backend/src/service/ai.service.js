@@ -1,40 +1,30 @@
-require('dotenv').config();
-const { GoogleGenAI } = require("@google/genai");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const ai = new GoogleGenAI({
-    apiKey: process.env.GEMINI_API_KEY,
-});
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-async function generateImageCaption(base64ImageFile) {
-    try {
-        const contents = [
-            {
-                inlineData: {
-                    mimeType: "image/jpeg",
-                    data: base64ImageFile,
-                },
-            },
-            { text: "Caption this image." },
-        ];
+async function generateImageCaption(base64ImageFile, mimeType = "image/jpeg") {
+  try {
+    const model = genAI.getGenerativeModel({
+      model: "gemini-2.0-flash",
+      systemInstruction: "You are a creative caption generator. Write a short caption with 2 hashtags and 1 emoji."
+    });
 
-        const response = await ai.models.generateContent({
-            model: "gemini-3-flash-preview",
-            contents,
-            config: {
-                systemInstruction: `You are an expert caption generator. 
-                Generate a concise and descriptive caption for the given image.
-                Focus on the main subject and context of the image. 
-                Avoid generic captions and be creative!
-                you can use atleast 2 hashtags and 1 emoji in the caption.`,
-            },
-        });
+    const result = await model.generateContent([
+      "Caption this image.",
+      {
+        inlineData: {
+          data: base64ImageFile,
+          mimeType,
+        },
+      },
+    ]);
 
-        return response.text;
-
-    } catch (err) {
-        console.error("Gemini Error:", err.message);
-        throw err;
-    }
+    const response = await result.response;
+    return response.text();
+  } catch (err) {
+    console.error("Gemini API Error:", err.message);
+    return "A beautiful moment captured. #photography #vibes ✨";
+  }
 }
 
 module.exports = generateImageCaption;
