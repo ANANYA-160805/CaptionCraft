@@ -1,0 +1,138 @@
+@use 'variables' as *;
+
+// ── Page layout ────────────────────────────────────────────────────────
+.page {
+  min-height: calc(100vh - 70px);
+  padding: 40px 20px 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+// ── Typography ─────────────────────────────────────────────────────────
+.display-title {
+  font-family: $font-display;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+// ── Form Styles ────────────────────────────────────────────────────────
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $text-secondary;
+  }
+
+  input {
+    background: $bg-elevated;
+    border: 1.5px solid $border-light;
+    border-radius: $radius-sm;
+    padding: 13px 16px;
+    color: $text-primary;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &::placeholder { color: $text-muted; }
+
+    &:focus {
+      outline: none;
+      border-color: $amber;
+      box-shadow: 0 0 0 3px rgba(232, 160, 32, 0.12);
+    }
+  }
+}
+
+// ── Button ─────────────────────────────────────────────────────────────
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: $radius-sm;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &--primary {
+    background: $amber;
+    color: #0d0d0d;
+    &:hover:not(:disabled) {
+      background: $amber-light;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(232, 160, 32, 0.3);
+    }
+    &:active { transform: translateY(0); }
+  }
+
+  &--ghost {
+    background: transparent;
+    border: 1.5px solid $border-light;
+    color: $text-secondary;
+    &:hover {
+      border-color: $amber;
+      color: $amber;
+    }
+  }
+
+  &--danger {
+    background: transparent;
+    color: $text-muted;
+    font-size: 0.8rem;
+    padding: 8px 16px;
+    &:hover { color: $error; }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--full { width: 100%; }
+}
+
+// ── Error / Alert ──────────────────────────────────────────────────────
+.alert {
+  padding: 12px 16px;
+  border-radius: $radius-sm;
+  font-size: 0.875rem;
+
+  &--error {
+    background: rgba(224, 80, 80, 0.1);
+    border: 1px solid rgba(224, 80, 80, 0.3);
+    color: #f08080;
+  }
+
+  &--success {
+    background: rgba(80, 200, 120, 0.1);
+    border: 1px solid rgba(80, 200, 120, 0.3);
+    color: #80e0a0;
+  }
+}
+
+// ── Animations ─────────────────────────────────────────────────────────
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+
+.fade-up {
+  animation: fadeUp 0.5s ease both;
+}

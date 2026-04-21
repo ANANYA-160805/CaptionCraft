@@ -1,0 +1,77 @@
+@use '../styles/variables' as *;
+
+.auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 20%, rgba(232, 160, 32, 0.06) 0%, transparent 60%),
+    $bg-primary;
+
+  &__box {
+    width: 100%;
+    max-width: 420px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  &__brand {
+    font-family: $font-display;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+
+    span { color: $amber; }
+  }
+
+  &__tagline {
+    font-size: 0.875rem;
+    color: $text-muted;
+    margin-bottom: 36px;
+  }
+
+  &__card {
+    background: $bg-card;
+    border: 1px solid $border;
+    border-radius: $radius-lg;
+    padding: 32px;
+  }
+
+  &__title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    color: $text-primary;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  &__footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: $text-muted;
+
+    a {
+      color: $amber;
+      &:hover { text-decoration: underline; }
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    background: $border;
+    margin: 4px 0;
+  }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
