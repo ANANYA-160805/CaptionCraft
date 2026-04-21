@@ -1,0 +1,97 @@
+@use '../styles/variables' as *;
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 70px;
+  background: rgba(13, 13, 13, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid $border;
+
+  &__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    font-family: $font-display;
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: $text-primary;
+
+    span {
+      color: $amber;
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__link {
+    padding: 7px 16px;
+    border-radius: $radius-sm;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: $text-secondary;
+    transition: color 0.2s, background 0.2s;
+
+    &:hover {
+      color: $text-primary;
+      background: $bg-elevated;
+    }
+
+    &--active {
+      color: $amber;
+      background: rgba(232, 160, 32, 0.08);
+    }
+
+    &--cta {
+      background: $amber;
+      color: #0d0d0d;
+      font-weight: 500;
+      &:hover {
+        background: $amber-light;
+        color: #0d0d0d;
+      }
+    }
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__username {
+    font-size: 0.8rem;
+    color: $text-muted;
+    letter-spacing: 0.05em;
+
+    span {
+      color: $text-secondary;
+    }
+  }
+
+  &__logout {
+    font-size: 0.8rem;
+    color: $text-muted;
+    padding: 6px 12px;
+    border-radius: $radius-sm;
+    transition: color 0.2s, background 0.2s;
+
+    &:hover {
+      color: $error;
+      background: rgba(224, 80, 80, 0.08);
+    }
+  }
+}

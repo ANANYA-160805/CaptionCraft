@@ -1,0 +1,178 @@
+$bg: #0f0f10;
+$panel: #17171a;
+$text: #f4f1ea;
+$muted: #b6b0a8;
+$accent: #f5a623;
+$accent-2: #ffbf47;
+
+.home {
+  min-height: calc(100vh - 72px);
+  background: radial-gradient(circle at top, #1b1b20 0%, $bg 55%);
+  color: $text;
+  padding: 3rem 1.5rem 4rem;
+
+  &__hero,
+  &__steps {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__hero {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+    align-items: center;
+    padding: 3rem 0 4rem;
+  }
+
+  &__eyebrow {
+    color: $accent;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-size: clamp(2.5rem, 5vw, 4.8rem);
+    line-height: 1.02;
+    margin: 0;
+    max-width: 10ch;
+  }
+
+  &__subtitle {
+    color: $muted;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 1.25rem 0 0;
+    max-width: 58ch;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 0.95rem 1.35rem;
+    background: linear-gradient(135deg, $accent, $accent-2);
+    color: #111;
+    font-weight: 800;
+    box-shadow: 0 12px 30px rgba(245, 166, 35, 0.2);
+
+    &--secondary {
+      background: transparent;
+      color: $text;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: none;
+    }
+  }
+
+  &__hero-card {
+    background: rgba($panel, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 1.25rem;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+  }
+
+  &__mock {
+    display: flex;
+    gap: 0.45rem;
+    margin-bottom: 1rem;
+  }
+
+  &__mock-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: $accent;
+    opacity: 0.85;
+  }
+
+  &__mock-image {
+    min-height: 260px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #2a2a31, #151519);
+    display: grid;
+    place-items: center;
+    color: $muted;
+    border: 1px dashed rgba(255, 255, 255, 0.08);
+  }
+
+  &__mock-caption {
+    margin: 1rem 0 0;
+    color: $text;
+    line-height: 1.6;
+  }
+
+  &__steps {
+    padding-top: 1rem;
+  }
+
+  &__section-header {
+    margin-bottom: 1.25rem;
+  }
+
+  &__section-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    margin: 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  &__card {
+    background: rgba($panel, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 1.5rem;
+    min-height: 210px;
+  }
+
+  &__card-number {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, $accent, $accent-2);
+    color: #111;
+    font-weight: 900;
+    margin-bottom: 1rem;
+  }
+
+  &__card-title {
+    margin: 0 0 0.65rem;
+    font-size: 1.2rem;
+  }
+
+  &__card-text {
+    margin: 0;
+    color: $muted;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 900px) {
+  .home {
+    &__hero {
+      grid-template-columns: 1fr;
+    }
+
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
