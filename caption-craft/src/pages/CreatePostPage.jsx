@@ -144,7 +144,7 @@ export default function CreatePostPage() {
             </p>
 
             <div className={styles.create__actions} style={{ marginTop: 20 }}>
-              <button className="btn btn--primary btn--full" onClick={() => navigate('/')}>
+              <button className="btn btn--primary btn--full" onClick={() => navigate('/feed')}>
                 View Feed
               </button>
               <button

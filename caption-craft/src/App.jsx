@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './routes/ProtectedRoute';
 import Navbar from './components/Navbar';
+import Home from './pages/Home';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import FeedPage from './pages/FeedPage';
@@ -18,7 +19,7 @@ export default function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route
-            path="/"
+            path="/feed"
             element={
               <ProtectedRoute>
                 <FeedPage />

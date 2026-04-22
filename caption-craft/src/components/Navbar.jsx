@@ -8,7 +8,7 @@ export default function Navbar() {
 
   const handleLogout = () => {
     signOut();
-    navigate('/login');
+    navigate('/');
   };
 
   return (
@@ -22,21 +22,25 @@ export default function Navbar() {
           {user ? (
             <>
               <NavLink
-                to="/"
+                to="/feed"
                 className={({ isActive }) =>
                   `${styles.navbar__link} ${isActive ? styles['navbar__link--active'] : ''}`
                 }
               >
                 Feed
               </NavLink>
+
               <NavLink
                 to="/create"
                 className={({ isActive }) =>
-                  `${styles.navbar__link} ${styles['navbar__link--cta']} ${isActive ? styles['navbar__link--active'] : ''}`
+                  `${styles.navbar__link} ${styles['navbar__link--cta']} ${
+                    isActive ? styles['navbar__link--active'] : ''
+                  }`
                 }
               >
                 + New Post
               </NavLink>
+
               <div className={styles.navbar__user}>
                 <span className={styles.navbar__username}>
                   @<span>{user.username}</span>
@@ -56,11 +60,16 @@ export default function Navbar() {
               >
                 Login
               </NavLink>
+
               <NavLink
                 to="/register"
-                className={`${styles.navbar__link} ${styles['navbar__link--cta']}`}
+                className={({ isActive }) =>
+                  `${styles.navbar__link} ${styles['navbar__link--cta']} ${
+                    isActive ? styles['navbar__link--active'] : ''
+                  }`
+                }
               >
-                Register
+                Get Started
               </NavLink>
             </>
           )}

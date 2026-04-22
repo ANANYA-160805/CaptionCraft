@@ -17,15 +17,17 @@ export default function RegisterPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+
     if (!username.trim() || !password.trim()) {
       setError('Please fill in all fields.');
       return;
     }
+
     setLoading(true);
     try {
       const data = await register(username.trim(), password);
       signIn(data.user);
-      navigate('/');
+      navigate('/feed');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed. Try again.');
     } finally {

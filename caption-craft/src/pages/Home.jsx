@@ -9,31 +9,55 @@ export default function Home() {
           <p className="home__eyebrow">AI-Powered Image Captions</p>
           <h1 className="home__title">Generate AI Captions in Seconds</h1>
           <p className="home__subtitle">
-            Upload an image, let AI analyze it instantly, and get a creative caption that fits your moment perfectly.
+            Upload any image and get a smart, creative caption instantly — perfect for social posts, memories, and brand content.
           </p>
+
+          <div className="home__trust">
+            <span>⚡ Instant results</span>
+            <span>🎯 Smart caption style</span>
+            <span>📸 Built for creators</span>
+          </div>
 
           <div className="home__actions">
             <Link to="/create" className="home__button">
               Try Now
             </Link>
-            <Link to="/how-it-works" className="home__button home__button--secondary">
-              How It Works
-            </Link>
+            <a href="#how-it-works" className="home__button home__button--secondary">
+              See How It Works
+            </a>
           </div>
         </div>
 
         <div className="home__hero-card">
           <div className="home__mock">
-            <div className="home__mock-dot" />
-            <div className="home__mock-dot" />
-            <div className="home__mock-dot" />
+            <span className="home__mock-dot"></span>
+            <span className="home__mock-dot"></span>
+            <span className="home__mock-dot"></span>
           </div>
           <div className="home__mock-image">
-            <span>Image Preview</span>
+            <div className="home__mock-placeholder">
+              AI Preview
+              <span>Upload an image to generate a caption</span>
+            </div>
           </div>
           <p className="home__mock-caption">
-            “A beautiful sunset over the mountains. #nature #goldenhour ✨”
+            Create captions that feel polished, trendy, and ready to post.
           </p>
+        </div>
+      </section>
+
+      <section className="home__stats">
+        <div className="home__stat">
+          <strong>3x</strong>
+          <span>faster caption creation</span>
+        </div>
+        <div className="home__stat">
+          <strong>100%</strong>
+          <span>creative AI output</span>
+        </div>
+        <div className="home__stat">
+          <strong>1 click</strong>
+          <span>to start generating</span>
         </div>
       </section>
 
@@ -68,6 +92,14 @@ export default function Home() {
             </p>
           </article>
         </div>
+      </section>
+
+      <section className="home__cta">
+        <h2>Ready to create something people notice?</h2>
+        <p>Turn any image into a caption worth posting.</p>
+        <Link to="/create" className="home__button">
+          Start Creating
+        </Link>
       </section>
     </main>
   );

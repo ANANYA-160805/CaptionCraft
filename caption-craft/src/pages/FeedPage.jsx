@@ -28,32 +28,57 @@ export default function FeedPage() {
 
   return (
     <main className={styles.feed}>
-      <div className={styles.feed__header}>
-        <h1 className={styles.feed__title}>
-          Your <span>Feed</span>
-        </h1>
-        <p className={styles.feed__subtitle}>
-          {posts.length > 0
-            ? `${posts.length} post${posts.length !== 1 ? 's' : ''} captured`
-            : 'Start sharing your moments'}
-        </p>
-      </div>
+      <section className={styles.feed__hero}>
+        <div>
+          <p className={styles.feed__eyebrow}>Community Showcase</p>
+          <h1 className={styles.feed__title}>
+            Your <span>Feed</span>
+          </h1>
+          <p className={styles.feed__subtitle}>
+            Discover captions created by AI and see what the community is sharing today.
+          </p>
+        </div>
+
+        <div className={styles.feed__stats}>
+          <div className={styles.feed__stat}>
+            <strong>{loading ? '—' : posts.length}</strong>
+            <span>Posts</span>
+          </div>
+          <div className={styles.feed__stat}>
+            <strong>AI</strong>
+            <span>Generated</span>
+          </div>
+          <div className={styles.feed__stat}>
+            <strong>Live</strong>
+            <span>Updates</span>
+          </div>
+        </div>
+      </section>
 
       <div className={styles.feed__grid}>
         {loading ? (
-          <p style={{ color: '#aaa' }}>Loading posts...</p>
+          <div className={styles.feed__state}>
+            <div className={styles.feed__spinner}></div>
+            <p>Loading posts...</p>
+          </div>
         ) : error ? (
-          <p style={{ color: '#ff7b7b' }}>{error}</p>
+          <div className={styles.feed__state}>
+            <div className={styles.feed__stateIcon}>⚠️</div>
+            <h2>Something went wrong</h2>
+            <p>{error}</p>
+          </div>
         ) : posts.length === 0 ? (
           <div className={styles.feed__empty}>
-            <div className={styles.feed__empty_icon}>📷</div>
-            <h2 className={styles.feed__empty_title}>No posts yet</h2>
-            <p className={styles.feed__empty_text}>
-              Upload an image and let AI craft the perfect caption.
-            </p>
-            <Link to="/create" className="btn btn--primary">
-              Create your first post
-            </Link>
+            <div className={styles.feed__emptyCard}>
+              <div className={styles.feed__emptyIcon}>📷</div>
+              <h2 className={styles.feed__emptyTitle}>No posts yet</h2>
+              <p className={styles.feed__emptyText}>
+                Upload an image and let AI craft the perfect caption.
+              </p>
+              <Link to="/create" className={styles.feed__cta}>
+                Create your first post
+              </Link>
+            </div>
           </div>
         ) : (
           posts.map((post, index) => (

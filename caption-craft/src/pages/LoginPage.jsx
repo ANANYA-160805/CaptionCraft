@@ -17,15 +17,17 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+
     if (!username.trim() || !password.trim()) {
       setError('Please fill in all fields.');
       return;
     }
+
     setLoading(true);
     try {
       const data = await login(username.trim(), password);
       signIn(data.user);
-      navigate('/');
+      navigate('/feed');
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed. Check your credentials.');
     } finally {
