@@ -11,6 +11,7 @@ export default function CreatePostPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [result, setResult] = useState(null);
+  const [copySuccess, setCopySuccess] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -62,6 +63,49 @@ export default function CreatePostPage() {
       setError(err.response?.data?.message || 'Upload failed. Please try again.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleCopy = async () => {
+    if (result?.caption) {
+      try {
+        await navigator.clipboard.writeText(result.caption);
+        setCopySuccess(true);
+        setTimeout(() => setCopySuccess(false), 2000);
+      } catch (err) {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = result.caption;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        setCopySuccess(true);
+        setTimeout(() => setCopySuccess(false), 2000);
+      }
+    }
+  };
+
+  const handleShare = async () => {
+    if (result?.caption && result?.image) {
+      const shareData = {
+        title: 'Check out my new post!',
+        text: result.caption,
+        url: window.location.origin + '/post/' + result._id // Adjust URL as needed
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          // Fallback: copy to clipboard
+          await navigator.clipboard.writeText(`${shareData.text}\n${shareData.url}`);
+          setCopySuccess(true);
+          setTimeout(() => setCopySuccess(false), 2000);
+        }
+      } catch (err) {
+        console.log('Share failed:', err);
+      }
     }
   };
 
@@ -130,6 +174,26 @@ export default function CreatePostPage() {
           <div className={styles.create__result}>
             <div className={styles.create__result_label}>Caption Generated</div>
             <p className={styles.create__result_caption}>{result.caption}</p>
+
+            {/* Copy & Share Buttons */}
+            <div className={styles.create__caption_actions} style={{ marginBottom: 15, display: 'flex', gap: '10px', justifyContent: 'center' }}>
+              <button
+                className="btn btn--ghost"
+                onClick={handleCopy}
+                style={{ padding: '8px 16px', fontSize: '14px' }}
+                title="Copy caption"
+              >
+                📋 {copySuccess ? 'Copied!' : 'Copy'}
+              </button>
+              <button
+                className="btn btn--ghost"
+                onClick={handleShare}
+                style={{ padding: '8px 16px', fontSize: '14px' }}
+                title="Share post"
+              >
+                🔗 Share
+              </button>
+            </div>
 
             {result.image && (
               <img

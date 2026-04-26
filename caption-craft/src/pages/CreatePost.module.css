@@ -1,0 +1,222 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans", system-ui, sans-serif;
+  background-color: #0d0d0d;
+  color: #f0ece4;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+input, textarea {
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.create {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+.create__header {
+  margin-bottom: 36px;
+  animation: fadeUp 0.4s ease both;
+}
+.create__title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #f0ece4;
+}
+.create__title span {
+  color: #e8a020;
+}
+.create__subtitle {
+  font-size: 0.9rem;
+  color: #5a5550;
+  margin-top: 6px;
+}
+.create__card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  padding: 32px;
+  animation: fadeUp 0.4s ease 0.1s both;
+}
+.create__dropzone {
+  border: 2px dashed #333333;
+  border-radius: 12px;
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+}
+.create__dropzone:hover, .create__dropzone--active {
+  border-color: #e8a020;
+  background: rgba(232, 160, 32, 0.04);
+}
+.create__dropzone input[type=file] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+.create__drop-icon {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+.create__drop-text {
+  font-size: 0.95rem;
+  color: #a09890;
+  margin-bottom: 4px;
+}
+.create__drop-hint {
+  font-size: 0.78rem;
+  color: #5a5550;
+}
+.create__preview-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+.create__preview {
+  width: 100%;
+  max-height: 380px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+.create__preview-change {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(13, 13, 13, 0.8);
+  border: 1px solid #333333;
+  color: #a09890;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.create__preview-change input[type=file] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+.create__preview-change:hover {
+  color: #e8a020;
+  border-color: #e8a020;
+}
+.create__actions {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.create__loading-text {
+  text-align: center;
+  font-size: 0.82rem;
+  color: #5a5550;
+  font-style: italic;
+}
+.create__result {
+  margin-top: 32px;
+  border-top: 1px solid #2a2a2a;
+  padding-top: 28px;
+  animation: fadeUp 0.5s ease both;
+}
+.create__result-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e8a020;
+  font-weight: 500;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.create__result-label::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e8a020;
+}
+.create__result-caption {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #f0ece4;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.create__result-image {
+  width: 100%;
+  border-radius: 12px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  max-height: 320px;
+}
+.create .create__caption_actions button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}/*# sourceMappingURL=CreatePost.module.css.map */

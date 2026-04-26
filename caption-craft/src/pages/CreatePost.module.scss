@@ -175,6 +175,11 @@
     object-fit: cover;
     max-height: 320px;
   }
+  .create__caption_actions {
+  button:hover {
+    background-color: rgba(0,0,0,0.05);
+  }
+}
 }
 
 @keyframes fadeUp {
